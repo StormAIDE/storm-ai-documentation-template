@@ -17,6 +17,9 @@ wird zentral in `storm-reply.latex` definiert. Die Datei
 `assets/image1.png` stammt aus dem bestehenden Storm-Reply-Word-Template und
 wird als Hintergrund der Titelseite verwendet.
 
+Eine bereits erzeugte Ausgabe liegt unter
+[`examples/Storm-Reply-Markdown-PDF-PoC.pdf`](examples/Storm-Reply-Markdown-PDF-PoC.pdf).
+
 Für einen späteren plattformübergreifenden oder CI-basierten Build sollten die
 freigegebenen Arial-Dateien kontrolliert bereitgestellt und die Schriftpfade im
 Template entsprechend konfiguriert werden.
