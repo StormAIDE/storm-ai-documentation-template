@@ -1,0 +1,180 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=40mm,right=15mm,bottom=24mm,left=15mm,headheight=24pt,headsep=10mm,footskip=18mm]{geometry}
+\usepackage{fontspec}
+\setmainfont[
+  Path=/System/Library/Fonts/Supplemental/,
+  UprightFont=Arial.ttf,
+  BoldFont=Arial Bold.ttf,
+  ItalicFont=Arial Italic.ttf,
+  BoldItalicFont=Arial Bold Italic.ttf
+]{Arial}
+\setsansfont[
+  Path=/System/Library/Fonts/Supplemental/,
+  UprightFont=Arial.ttf,
+  BoldFont=Arial Bold.ttf,
+  ItalicFont=Arial Italic.ttf,
+  BoldItalicFont=Arial Bold Italic.ttf
+]{Arial}
+\newfontfamily\stormdisplay[
+  Path=/System/Library/Fonts/Supplemental/,
+  UprightFont=Arial Black.ttf
+]{Arial Black}
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{StormTeal}{HTML}{00A486}
+\definecolor{StormDark}{HTML}{404040}
+\definecolor{StormGrey}{HTML}{808080}
+\definecolor{StormLight}{HTML}{F0F0F0}
+\definecolor{StormPurple}{HTML}{55459A}
+
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{microtype}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=StormTeal,
+  urlcolor=StormTeal,
+  citecolor=StormTeal,
+  pdftitle={$title$},
+  pdfauthor={$author$}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.35}
+\arrayrulecolor{white}
+\AtBeginEnvironment{longtable}{\rowcolors{2}{StormLight}{white}}
+\AtBeginEnvironment{tabular}{\rowcolors{2}{StormLight}{white}}
+
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{0pt}{18pt}{7pt}{\stormdisplay\fontsize{12}{14}\selectfont\color{StormDark}}}
+\renewcommand\subsection{\@startsection{subsection}{2}{0pt}{14pt}{5pt}{\bfseries\fontsize{11}{13}\selectfont\color{StormDark}}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0pt}{12pt}{4pt}{\bfseries\fontsize{10}{12}\selectfont\color{StormDark}}}
+\makeatother
+
+\renewcommand{\contentsname}{INHALTSVERZEICHNIS}
+\newcounter{none}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{%
+  \begin{minipage}[b]{0.78\textwidth}
+    {\bfseries\fontsize{8.5}{10}\selectfont\color{StormGrey}$title$}\\[-1pt]
+    {\fontsize{7.5}{9}\selectfont\color{StormTeal}$subtitle$}
+  \end{minipage}}
+\fancyhead[R]{\fontsize{7.5}{9}\selectfont\color{StormGrey}$revision$}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{%
+  \begin{minipage}{\textwidth}
+    \colorbox{StormLight}{%
+      \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+        \fontsize{6.5}{8}\selectfont\color{StormDark}
+        erstellt von: $author$
+        \hfill freigegeben von: $approved_by$
+        \hfill Revision: $revision$
+        \hfill Seite: \thepage/\pageref{LastPagePlaceholder}}}%
+    \\[-1pt]\hfill{\fontsize{6}{7}\selectfont\color{StormGrey}$document_id$}
+  \end{minipage}}
+\renewcommand{\footrulewidth}{0pt}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\passthrough}[1]{#1}
+\newcommand{\pandocbounded}[1]{#1}
+\newcommand{\stormbullet}{%
+  \raisebox{0.15ex}{\textcolor{StormTeal}{\rule{0.7mm}{0.7mm}}}}
+
+\begin{document}
+
+\newgeometry{top=8mm,right=15mm,bottom=15mm,left=15mm}
+\thispagestyle{empty}
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \put(0,-\LenToUnit{44.4mm}){%
+      \makebox(0,0)[lt]{%
+        \includegraphics[width=\paperwidth,height=94.6mm]{assets/image1.png}}}}}
+
+\vspace*{58mm}
+\begin{flushright}
+  \begin{minipage}{0.53\textwidth}
+    \RaggedLeft
+    {\stormdisplay\fontsize{24}{27}\selectfont\color{white}\MakeUppercase{$title$}\par}
+    \vspace{5mm}
+    {\fontsize{14}{17}\selectfont\color{white}$subtitle$\par}
+  \end{minipage}
+\end{flushright}
+
+\vspace{86mm}
+\begin{tabularx}{\textwidth}{@{}>{\fontsize{7}{9}\selectfont\color{StormGrey}}lX>{\fontsize{7}{9}\selectfont\color{StormGrey}}lX@{}}
+  erstellt von: & $author$ & freigegeben von: & $approved_by$ \\
+  Bereich: & $unit$ & Ausgabedatum: & $issue_date$ \\
+  Revision: & $revision$ & Dokument: & $document_id$ \\
+\end{tabularx}
+\vspace{2mm}
+\colorbox{StormLight}{%
+  \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+    \fontsize{6.5}{8}\selectfont\color{StormDark}
+    Vertraulichkeit: $privacy_notes$}}
+
+\vfill
+{\fontsize{6.5}{8}\selectfont\color{StormDark}
+\textbf{STORM REPLY}\\
+Bartholomäusweg 26 · D-33334 Gütersloh · Deutschland\\
+\textbf{storm@reply.de}\\[2mm]
+{\color{StormTeal}\textbf{www.reply.de}}
+\par}
+\restoregeometry
+
+\section*{DOKUMENTSTATUS}
+
+\begin{tabularx}{\textwidth}{p{18mm}p{24mm}Xp{35mm}}
+\rowcolor{StormTeal}
+{\bfseries\color{white}Revision} & {\color{white}Datum} & {\color{white}Änderung} & {\color{white}Freigabe} \\
+$for(revisions)$
+\rowcolor{StormLight}
+$revisions.revision$ & $revisions.date$ & $revisions.change$ & $revisions.approved$ \\
+$endfor$
+\end{tabularx}
+
+\vspace{10mm}
+\section*{ÄNDERUNGSÜBERSICHT}
+\colorbox{StormLight}{%
+  \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+    \vspace{2mm}
+    \textbf{\color{StormTeal}Wesentliche Änderungen gegenüber der vorherigen Version}\\
+    $change_summary$
+    \vspace{2mm}}}
+
+\vspace{10mm}
+\section*{ANLAGEN}
+\begin{tabular}{@{}p{4mm}l@{}}
+$for(attachments)$
+  \stormbullet & $attachments$ \\
+$endfor$
+\end{tabular}
+\clearpage
+
+$if(toc)$
+\tableofcontents
+\clearpage
+$endif$
+
+$body$
+
+\label{LastPagePlaceholder}
+\end{document}
