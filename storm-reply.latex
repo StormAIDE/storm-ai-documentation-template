@@ -140,6 +140,7 @@ Bartholomäusweg 26 · D-33334 Gütersloh · Deutschland\\
 \par}
 \restoregeometry
 
+$if(revisions)$
 \section*{DOKUMENTSTATUS}
 
 \begin{tabularx}{\textwidth}{p{18mm}p{24mm}Xp{35mm}}
@@ -150,7 +151,9 @@ $for(revisions)$
 $revisions.revision$ & $revisions.date$ & $revisions.change$ & $revisions.approved$ \\
 $endfor$
 \end{tabularx}
+$endif$
 
+$if(change_summary)$
 \vspace{10mm}
 \section*{ÄNDERUNGSÜBERSICHT}
 \colorbox{StormLight}{%
@@ -159,7 +162,9 @@ $endfor$
     \textbf{\color{StormTeal}Wesentliche Änderungen gegenüber der vorherigen Version}\\
     $change_summary$
     \vspace{2mm}}}
+$endif$
 
+$if(attachments)$
 \vspace{10mm}
 \section*{ANLAGEN}
 \begin{tabular}{@{}p{4mm}l@{}}
@@ -167,6 +172,7 @@ $for(attachments)$
   \stormbullet & $attachments$ \\
 $endfor$
 \end{tabular}
+$endif$
 \clearpage
 
 $if(toc)$
