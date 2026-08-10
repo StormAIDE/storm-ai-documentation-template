@@ -39,8 +39,27 @@ for part in msg.walk():
         sys.stdout.buffer.write(part.get_payload(decode=True))
         break
 " "$input" > "$_mime_html"
-    input="$(realpath "$_mime_html")"
-    fmt=html
+
+# rewrite Confluence <pre class="syntaxhighlighter-pre"> into <pre><code>
+# so Pandoc reads it as a real code block with indentation intact
+_pre_html="${_mime_html%.html}_pre.html"
+_tmpfiles+=("$_pre_html")
+python3 - "$_mime_html" > "$_pre_html" <<'PY'
+import re, sys
+src = open(sys.argv[1], encoding='utf-8', errors='replace').read()
+
+def fix(m):
+    inner = re.sub(r'<[^>]+>', '', m.group(1))   # strip tags inside pre
+    return '<pre><code>' + inner + '</code></pre>'
+
+src = re.sub(
+    r'<pre[^>]*class="[^"]*syntaxhighlighter-pre[^"]*"[^>]*>(.*?)</pre>',
+    fix, src, flags=re.S)
+sys.stdout.write(src)
+PY
+
+input="$(realpath "$_pre_html")"
+fmt=html
   else
     _docx="${input%.doc}.docx"
     _tmpfiles+=("$_docx")
@@ -67,6 +86,8 @@ pandoc "$input" \
   --template storm-reply.latex \
   --pdf-engine=lualatex \
   --syntax-highlighting=none \
+  --toc \
+  --toc-depth=3 \
   ${extra_args:+$extra_args} \
   --resource-path=. \
   --output "$output"

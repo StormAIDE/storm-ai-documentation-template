@@ -38,13 +38,101 @@
 \usepackage{array}
 \usepackage{calc}
 \usepackage{ragged2e}
+\usepackage{tocloft}
 \usepackage{hyperref}
 \usepackage{bookmark}
 \usepackage{microtype}
 
+\usepackage{fvextra}
+\usepackage{mdframed}
+
+\definecolor{StormCodeBg}{HTML}{F6F8FA}
+
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{
+  breaklines=true,
+  breakanywhere=true,
+  fontsize=\small
+}
+
+\surroundwithmdframed[
+  backgroundcolor=StormCodeBg,
+  linewidth=0pt,
+  leftline=true,
+  linecolor=StormTeal,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=8pt,
+  skipbelow=8pt
+]{verbatim}
+
+\definecolor{StormInlineCodeBg}{HTML}{F6F8FA}
+\newcommand{\stormcode}[1]{\colorbox{StormInlineCodeBg}{\texttt{\small #1}}}
+
+% ---------------------------------------------------------------------------
+% Localised labels. English is the default; set `lang: de` in the document
+% metadata (or pass --metadata lang=de) for German.
+% ---------------------------------------------------------------------------
+$if(lang)$$if(lang.de)$
+\newcommand{\lblContents}{INHALTSVERZEICHNIS}
+\newcommand{\lblCreatedBy}{erstellt von}
+\newcommand{\lblApprovedBy}{freigegeben von}
+\newcommand{\lblUnit}{Bereich}
+\newcommand{\lblIssueDate}{Ausgabedatum}
+\newcommand{\lblRevision}{Revision}
+\newcommand{\lblDocument}{Dokument}
+\newcommand{\lblPage}{Seite}
+\newcommand{\lblPrivacy}{Vertraulichkeit}
+\newcommand{\lblDocStatus}{DOKUMENTSTATUS}
+\newcommand{\lblChangeSummary}{ÄNDERUNGSÜBERSICHT}
+\newcommand{\lblAttachments}{ANLAGEN}
+\newcommand{\lblRevisionCol}{Revision}
+\newcommand{\lblDateCol}{Datum}
+\newcommand{\lblChangeCol}{Änderung}
+\newcommand{\lblApprovalCol}{Freigabe}
+\newcommand{\lblMainChanges}{Wesentliche Änderungen gegenüber der vorherigen Version}
+$else$
+\newcommand{\lblContents}{CONTENTS}
+\newcommand{\lblCreatedBy}{created by}
+\newcommand{\lblApprovedBy}{approved by}
+\newcommand{\lblUnit}{unit}
+\newcommand{\lblIssueDate}{issue date}
+\newcommand{\lblRevision}{revision}
+\newcommand{\lblDocument}{document}
+\newcommand{\lblPage}{page}
+\newcommand{\lblPrivacy}{confidentiality}
+\newcommand{\lblDocStatus}{DOCUMENT STATUS}
+\newcommand{\lblChangeSummary}{CHANGES SUMMARY}
+\newcommand{\lblAttachments}{ATTACHMENTS}
+\newcommand{\lblRevisionCol}{Review}
+\newcommand{\lblDateCol}{Date}
+\newcommand{\lblChangeCol}{Changes}
+\newcommand{\lblApprovalCol}{Approved by}
+\newcommand{\lblMainChanges}{Main changes compared to the previous version}
+$endif$$else$
+\newcommand{\lblContents}{CONTENTS}
+\newcommand{\lblCreatedBy}{created by}
+\newcommand{\lblApprovedBy}{approved by}
+\newcommand{\lblUnit}{unit}
+\newcommand{\lblIssueDate}{issue date}
+\newcommand{\lblRevision}{revision}
+\newcommand{\lblDocument}{document}
+\newcommand{\lblPage}{page}
+\newcommand{\lblPrivacy}{confidentiality}
+\newcommand{\lblDocStatus}{DOCUMENT STATUS}
+\newcommand{\lblChangeSummary}{CHANGES SUMMARY}
+\newcommand{\lblAttachments}{ATTACHMENTS}
+\newcommand{\lblRevisionCol}{Review}
+\newcommand{\lblDateCol}{Date}
+\newcommand{\lblChangeCol}{Changes}
+\newcommand{\lblApprovalCol}{Approved by}
+\newcommand{\lblMainChanges}{Main changes compared to the previous version}
+$endif$
+
 \hypersetup{
   colorlinks=true,
-  linkcolor=StormTeal,
+  hidelinks,
   urlcolor=StormTeal,
   citecolor=StormTeal,
   pdftitle={$title$},
@@ -56,19 +144,28 @@
 \setlength{\emergencystretch}{3em}
 \renewcommand{\arraystretch}{1.35}
 \arrayrulecolor{white}
+\renewcommand{\toprule}{\rowcolor{StormTeal}}
 \AtBeginEnvironment{longtable}{\rowcolors{2}{StormLight}{white}}
 \AtBeginEnvironment{tabular}{\rowcolors{2}{StormLight}{white}}
 
 \makeatletter
-\renewcommand\section{\@startsection{section}{1}{0pt}{18pt}{7pt}{\stormdisplay\fontsize{12}{14}\selectfont\color{StormDark}}}
-\renewcommand\subsection{\@startsection{subsection}{2}{0pt}{14pt}{5pt}{\bfseries\fontsize{11}{13}\selectfont\color{StormDark}}}
+\renewcommand\section{\@startsection{section}{1}{0pt}{18pt}{7pt}{\stormdisplay\fontsize{12}{14}\selectfont\color{StormTeal}}}
+\renewcommand\subsection{\@startsection{subsection}{2}{0pt}{14pt}{5pt}{\bfseries\fontsize{11}{13}\selectfont\color{StormTeal}}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{0pt}{12pt}{4pt}{\bfseries\fontsize{10}{12}\selectfont\color{StormDark}}}
 \makeatother
 
-\renewcommand{\contentsname}{INHALTSVERZEICHNIS}
+\renewcommand{\contentsname}{\lblContents}
 \newcounter{none}
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
+
+\renewcommand{\cftsecfont}{\color{StormTeal}\bfseries}
+\renewcommand{\cftsecpagefont}{\color{StormTeal}\bfseries}
+\renewcommand{\cftsubsecfont}{\color{StormTeal}}
+\renewcommand{\cftsubsecpagefont}{\color{StormTeal}}
+\renewcommand{\cftsubsubsecfont}{\color{StormDark}}
+\renewcommand{\cftsubsubsecpagefont}{\color{StormDark}}
+\renewcommand{\cfttoctitlefont}{\stormdisplay\fontsize{12}{14}\selectfont\color{StormTeal}}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -84,10 +181,10 @@
     \colorbox{StormLight}{%
       \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
         \fontsize{6.5}{8}\selectfont\color{StormDark}
-        erstellt von: $author$
-        \hfill freigegeben von: $approved_by$
-        \hfill Revision: $revision$
-        \hfill Seite: \thepage/\pageref{LastPagePlaceholder}}}%
+        \lblCreatedBy: $author$
+        \hfill \lblApprovedBy: $approved_by$
+        \hfill \lblRevision: $revision$
+        \hfill \lblPage: \thepage/\pageref{LastPagePlaceholder}}}%
     \\[-1pt]\hfill{\fontsize{6}{7}\selectfont\color{StormGrey}$document_id$}
   \end{minipage}}
 \renewcommand{\footrulewidth}{0pt}
@@ -111,8 +208,11 @@
 
 \vspace*{58mm}
 \begin{flushright}
-  \begin{minipage}{0.53\textwidth}
+  \begin{minipage}{0.62\textwidth}
     \RaggedLeft
+    \hyphenpenalty=10000
+    \exhyphenpenalty=10000
+    \emergencystretch=0pt
     {\stormdisplay\fontsize{24}{27}\selectfont\color{white}\MakeUppercase{$title$}\par}
     \vspace{5mm}
     {\fontsize{14}{17}\selectfont\color{white}$subtitle$\par}
@@ -121,15 +221,15 @@
 
 \vspace{86mm}
 \begin{tabularx}{\textwidth}{@{}>{\fontsize{7}{9}\selectfont\color{StormGrey}}lX>{\fontsize{7}{9}\selectfont\color{StormGrey}}lX@{}}
-  erstellt von: & $author$ & freigegeben von: & $approved_by$ \\
-  Bereich: & $unit$ & Ausgabedatum: & $issue_date$ \\
-  Revision: & $revision$ & Dokument: & $document_id$ \\
+  \lblCreatedBy: & $author$ & \lblApprovedBy: & $approved_by$ \\
+  \lblUnit: & $unit$ & \lblIssueDate: & $issue_date$ \\
+  \lblRevision: & $revision$ & \lblDocument: & $document_id$ \\
 \end{tabularx}
 \vspace{2mm}
 \colorbox{StormLight}{%
   \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
     \fontsize{6.5}{8}\selectfont\color{StormDark}
-    Vertraulichkeit: $privacy_notes$}}
+    \lblPrivacy: $privacy_notes$}}
 
 \vfill
 {\fontsize{6.5}{8}\selectfont\color{StormDark}
@@ -141,11 +241,11 @@ Bartholomäusweg 26 · D-33334 Gütersloh · Deutschland\\
 \restoregeometry
 
 $if(revisions)$
-\section*{DOKUMENTSTATUS}
+\section*{\lblDocStatus}
 
 \begin{tabularx}{\textwidth}{p{18mm}p{24mm}Xp{35mm}}
 \rowcolor{StormTeal}
-{\bfseries\color{white}Revision} & {\color{white}Datum} & {\color{white}Änderung} & {\color{white}Freigabe} \\
+{\bfseries\color{white}\lblRevisionCol} & {\color{white}\lblDateCol} & {\color{white}\lblChangeCol} & {\color{white}\lblApprovalCol} \\
 $for(revisions)$
 \rowcolor{StormLight}
 $revisions.revision$ & $revisions.date$ & $revisions.change$ & $revisions.approved$ \\
@@ -155,18 +255,18 @@ $endif$
 
 $if(change_summary)$
 \vspace{10mm}
-\section*{ÄNDERUNGSÜBERSICHT}
+\section*{\lblChangeSummary}
 \colorbox{StormLight}{%
   \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
     \vspace{2mm}
-    \textbf{\color{StormTeal}Wesentliche Änderungen gegenüber der vorherigen Version}\\
+    \textbf{\color{StormTeal}\lblMainChanges}\\
     $change_summary$
     \vspace{2mm}}}
 $endif$
 
 $if(attachments)$
 \vspace{10mm}
-\section*{ANLAGEN}
+\section*{\lblAttachments}
 \begin{tabular}{@{}p{4mm}l@{}}
 $for(attachments)$
   \stormbullet & $attachments$ \\

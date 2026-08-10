@@ -1,0 +1,797 @@
+Date: Mon, 10 Aug 2026 11:31:39 +0000 (UTC)
+Message-ID: <1375155450.27.1786361499676@90e330848b14>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_26_1178908566.1786361499676"
+
+------=_Part_26_1178908566.1786361499676
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Copy of Simplifier PoC - Installation Requirements</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Copy of Simplifier PoC - Installation Requirements</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"13a74fef8b83" id=3D"CopyofSimplifierPoC-Installatio=
+nRequirements-Introduction">Introduction</h1>
+<p local-id=3D"82361793dc48">This document separates:</p>
+<ol start=3D"1" local-id=3D"eec81bc4f259">
+<li local-id=3D"12df44f85194">
+<p local-id=3D"f4d5716f5903"><strong>Customer preparation</strong> that can=
+ be completed before the AWS DevOps Agent is deployed.</p></li>
+<li local-id=3D"1958f9e30737">
+<p local-id=3D"7bc8063c9471"><strong>Deployment and integration by REPLY</s=
+trong> after the customer preparation is complete.</p></li>
+</ol>
+<h1 local-id=3D"9bae4f666eef" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-SetupGuide">Setup Guide</h1>
+<h2 local-id=3D"e7e77b7e1602" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-AzureDevOps">Azure DevOps</h2>
+<p local-id=3D"aa52d1b476d5">To integrate the agent with the customer's <st=
+rong>Azure DevOps organization</strong>, the solution requires:</p>
+<ul local-id=3D"37ac52a1-9e9c-4719-a88b-9515e1ea40c8">
+<li local-id=3D"a1740607-51b1-4525-9066-74febf2acbfe">
+<p local-id=3D"b95343fa2a37">an <strong>Azure DevOps MCP server</strong>, w=
+hich acts as the communication layer between the agent and Azure DevOps;</p=
+></li>
+<li local-id=3D"441698f4-7c09-4596-b9bc-cb0b92ef276f">
+<p local-id=3D"0cf5a825e9ee">a dedicated <strong>non-human identity</strong=
+>, such as a <strong>Microsoft Entra application</strong>, used by the solu=
+tion for authentication;</p></li>
+<li local-id=3D"c05969e2-8225-43b8-acd0-c4fadaf6783a">
+<p local-id=3D"d25825b966e3">the necessary <strong>Azure DevOps organizatio=
+n access and permissions</strong>, granted and managed by the customer.</p>=
+</li>
+</ul>
+<p local-id=3D"74c682e6f223">Using a non-human identity avoids dependency o=
+n individual user accounts, interactive login sessions or employee lifecycl=
+e events, such as role changes or account deactivation.</p>
+<p local-id=3D"4e0d3860c9ec">For the Azure DevOps MCP server, two deploymen=
+t options are available: a remote server hosted by Microsoft and a local MC=
+P server deployed as part of the solution runtime. The remote Azure DevOps =
+MCP server is mainly designed for interactive Microsoft Entra OAuth usage w=
+ith end-user tools such as Visual Studio Code. For this reason, it is less =
+suitable for a dedicated service-to-service integration. In this solution, =
+we use the local MCP server, which is already embedded in our architecture =
+and supports authentication mechanisms suitable for non-human access. This =
+option is also preferred because it provides a more stable and predictable =
+release lifecycle, reducing the risk of breaking changes affecting the inte=
+gration.</p>
+<p local-id=3D"6cef1cd3f09d"><strong>To enable the integration, the custome=
+r needs to prepare the following items:</strong></p>
+<h3 local-id=3D"6362dde99057" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-1.RequiredAzureDevOpsInformation"><strong>1. Required Azure DevOps In=
+formation</strong></h3>
+<ul local-id=3D"90217688-ed0d-4216-b644-54622fd43baf">
+<li local-id=3D"fedc4f5f-4bc3-47c7-b428-23a04204c619">
+<p local-id=3D"96765f960210">Azure DevOps organization name;</p></li>
+<li local-id=3D"b33b16f1-12a6-4edb-b8a7-48f2103c696c">
+<p local-id=3D"28cc215fe673">if applicable, the default target project to b=
+e made available to the agent.</p></li>
+</ul>
+<p local-id=3D"ae9096ecf9c7">Access is expected to apply to the resources a=
+ssociated with the selected project(s), according to the permissions assign=
+ed by the customer within Azure DevOps.</p>
+<h3 local-id=3D"630721702acf" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-2.MicrosoftEntraApplicationConfiguration"><strong>2. Microsoft Entra =
+Application Configuration</strong></h3>
+<p local-id=3D"4d9fee551404">The customer should register a dedicated Micro=
+soft Entra application to be used as the non-human identity for the Azure D=
+evOps integration.</p>
+<p local-id=3D"648d15fa3ace">The application should be configured as follow=
+s:</p>
+<ol start=3D"1" local-id=3D"78c6eaaada8f">
+<li local-id=3D"2b706c97463f">
+<p local-id=3D"e3c00c9c21cb">Create a new App registration in Microsoft Ent=
+ra ID</p></li>
+<li local-id=3D"1a7afc70f5c9">
+<p local-id=3D"1c264e042afd">Use a clear and dedicated name, for example: S=
+tormAI DevOps Agent</p></li>
+<li local-id=3D"b44788adbe89">
+<p local-id=3D"2ff24156e7d8">Configure the application as single-tenant</p>=
+</li>
+<li local-id=3D"fc7c3e77ccc6">
+<p local-id=3D"7d1272784c00">No Redirect URI is required since the applicat=
+ion is used only for non-interactive service-to-service authentication</p><=
+/li>
+<li local-id=3D"8d397d3967b9">
+<p local-id=3D"ba926c663c0e">Create a Client Secret for the application</p>=
+</li>
+</ol>
+<p local-id=3D"f8e23b2e5190"><strong>Important</strong>: the client secret =
+value is visible only once, immediately after creation. It must be copied a=
+nd stored securely at that time</p>
+<ol start=3D"6" local-id=3D"e311b63479ba">
+<li local-id=3D"1407edf62582">
+<p local-id=3D"3071890a5434">Record the following values:</p></li>
+</ol>
+<ul local-id=3D"d6306dfe6d3c">
+<li local-id=3D"869cf9904081">
+<ul local-id=3D"82e12fd834f9">
+<li local-id=3D"fa5df5ec-f855-4414-9fa6-f7fc84d38b49">
+<p local-id=3D"d56bb2db0a91">Tenant ID;</p></li>
+<li local-id=3D"4780ee8a-8014-466a-a172-f7e75f1cb500">
+<p local-id=3D"6bcff18b458d">Client ID / Application ID;</p></li>
+<li local-id=3D"090e90d7-ad19-4842-adde-3a75965bf309">
+<p local-id=3D"631e260eec8b">Client Secret</p></li>
+</ul></li>
+</ul>
+<ol start=3D"7" local-id=3D"389fbf36dc6b">
+<li local-id=3D"588f1623c49b">
+<p local-id=3D"e6a1d912ef9e">No broad Microsoft Graph permissions are requi=
+red unless explicitly needed for a separate use case.</p></li>
+</ol>
+<h3 local-id=3D"0043dc80e6df" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-3.AddtheMicrosoftEntraApplicationtotheAzureDevOpsOrganization"><stron=
+g>3. Add the Microsoft Entra Application to the Azure DevOps Organization</=
+strong></h3>
+<p local-id=3D"e0df2848edee">The Microsoft Entra application registration a=
+lone is not sufficient: the identity must also be recognized as a user insi=
+de Azure DevOps and assigned the appropriate access.</p>
+<p local-id=3D"e0e43dc3c8de">The customer needs to:</p>
+<ol start=3D"1" local-id=3D"6ead31bf5826">
+<li local-id=3D"4a2168f2433a">
+<p local-id=3D"f4daca5fa71f">Open the target Azure DevOps organization</p><=
+/li>
+<li local-id=3D"139cf490d341">
+<p local-id=3D"190c2db1b3c4">Go to Organization settings</p></li>
+<li local-id=3D"21b8dcb7b82b">
+<p local-id=3D"89784d44c06d">Open Users</p></li>
+<li local-id=3D"fee6e99fee31">
+<p local-id=3D"6f358be2ebb2">Select Add users</p></li>
+<li local-id=3D"1fcbc2461e2a">
+<p local-id=3D"fbbf4f112da8">Search for the service principal using the reg=
+istered application name, for example StormAI DevOps Agent</p></li>
+<li local-id=3D"c0dc3504935c">
+<p local-id=3D"fe549dea1767">Assign the required access level</p></li>
+<li local-id=3D"618a17be0310">
+<p local-id=3D"e7f390416d41">Add it to the target project(s)</p></li>
+<li local-id=3D"42967ebf4c20">
+<p local-id=3D"1988b7f6b22c">Configure the required project permissions acc=
+ording to the agreed scope</p></li>
+</ol>
+<p local-id=3D"8ffa35584fc1">Once added, the service principal can be manag=
+ed like a technical user within Azure DevOps, including project membership,=
+ repository permissions, board access and other organization-level controls=
+.</p>
+<h3 local-id=3D"ed5b8305a76e" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-4.AzureDevOpsIntegrationConfiguration"><strong>4. Azure DevOps Integr=
+ation Configuration</strong></h3>
+<p local-id=3D"44731cad94eb">The required Azure DevOps integration values c=
+an be provided through the <strong>OpenTofu tfvars file</strong> used for t=
+he deployment.</p>
+<p local-id=3D"39f082632398">Example:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">azure_d=
+evops_config =3D {
+  org_name  =3D "&lt;AZURE_DEVOPS_ORG_NAME&gt;"
+  project   =3D "&lt;AZURE_DEVOPS_PROJECT_NAME&gt;"
+  tenant_id =3D "&lt;AZURE_ENTRA_TENANT_ID&gt;"
+}</pre>
+</div>
+</div>
+<p local-id=3D"932b7ed0cee2">After the Microsoft Entra application has been=
+ created and the solution deployed on AWS, update the Secret Manager entry =
+with the actual <strong>Client ID</strong> and <strong>Client Secret</stron=
+g>.</p>
+<p local-id=3D"43afb2885ce1">The secret name can be retrieved from the Open=
+Tofu output:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">tofu ou=
+tput -raw azure_devops_client_credentials_secret_name</pre>
+</div>
+</div>
+<p local-id=3D"c41130c6071c">Then update the secret value:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">aws sec=
+retsmanager put-secret-value \
+  --region &lt;AWS_REGION&gt; \
+  --secret-id "&lt;SECRET_NAME_FROM_OUTPUT&gt;" \
+  --secret-string '{"client_id":"&lt;AZURE_CLIENT_ID&gt;","client_secret":"=
+&lt;AZURE_CLIENT_SECRET&gt;"}'</pre>
+</div>
+</div>
+<h2 local-id=3D"0e63c5678be0" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-AWS">AWS</h2>
+<h3 local-id=3D"3b6f62fbe9e0" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-Responsibilitiesataglance">Responsibilities at a glance</h3>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"82=
+8baec65a42" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"abcd70d29f40">
+<th data-local-id=3D"1cd9ba038232" class=3D"confluenceTh">
+<p local-id=3D"0ec7c22d6e38">Phase</p></th>
+<th data-local-id=3D"79a0b45652d6" class=3D"confluenceTh">
+<p local-id=3D"224c574308bc">Owner</p></th>
+<th data-local-id=3D"01784c522635" class=3D"confluenceTh">
+<p local-id=3D"cffb294fffd0">Result</p></th>
+</tr>
+<tr data-local-id=3D"61f711292ecc">
+<td data-local-id=3D"4c6fd4dbcb95" class=3D"confluenceTd">
+<p local-id=3D"61395b88938a">Provide central parameters</p></td>
+<td data-local-id=3D"850a02184b7f" class=3D"confluenceTd">
+<p local-id=3D"d7a2d0e30bd1">REPLY</p></td>
+<td data-local-id=3D"27d108907112" class=3D"confluenceTd">
+<p local-id=3D"e712158de375">Monitoring account ID, Region, and agreed role=
+ name</p></td>
+</tr>
+<tr data-local-id=3D"eebc419ea758">
+<td data-local-id=3D"77b56166cd6d" class=3D"confluenceTd">
+<p local-id=3D"8ba7dc2ad44a">Create target-account IAM role</p></td>
+<td data-local-id=3D"64190ab5dff2" class=3D"confluenceTd">
+<p local-id=3D"950ae3326c39">Customer</p></td>
+<td data-local-id=3D"f6aec75b78e3" class=3D"confluenceTd">
+<p local-id=3D"0aa0b7e2d6a7">One assumable role in each AWS account to be m=
+onitored</p></td>
+</tr>
+<tr data-local-id=3D"61c613e35192">
+<td data-local-id=3D"8119982e9070" class=3D"confluenceTd">
+<p local-id=3D"6d3b1f499e6c">Deploy AWS DevOps Agent</p></td>
+<td data-local-id=3D"85f38beab98b" class=3D"confluenceTd">
+<p local-id=3D"024958aef5ff">REPLY</p></td>
+<td data-local-id=3D"7c9f695788aa" class=3D"confluenceTd">
+<p local-id=3D"7ecb2ba9fb3d">Agent Space and primary-account association</p=
+></td>
+</tr>
+<tr data-local-id=3D"bdee24410393">
+<td data-local-id=3D"1f0cce3c3bf5" class=3D"confluenceTd">
+<p local-id=3D"4abb5ee08c53">Connect target accounts</p></td>
+<td data-local-id=3D"68d1bb54c485" class=3D"confluenceTd">
+<p local-id=3D"fcab190d7b5c">REPLY</p></td>
+<td data-local-id=3D"5f05c0bbff6b" class=3D"confluenceTd">
+<p local-id=3D"410f8c629175">Each customer role is associated with the Agen=
+t Space</p></td>
+</tr>
+<tr data-local-id=3D"c390069ebe47">
+<td data-local-id=3D"f60ebafdd3ad" class=3D"confluenceTd">
+<p local-id=3D"2c905be03d80">Validate and optionally harden trust</p></td>
+<td data-local-id=3D"2d480f9f6142" class=3D"confluenceTd">
+<p local-id=3D"bf1452e9d98c">REPLY and customer</p></td>
+<td data-local-id=3D"3d4d4cb18f95" class=3D"confluenceTd">
+<p local-id=3D"29bb44c013a9">Active connection; optional restriction to the=
+ final Agent Space ID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"4c0131168ced">The customer does <strong>not</strong> need to=
+ deploy an AWS DevOps Agent or know the final Agent Space ID before complet=
+ing the preparation below.</p>
+<hr local-id=3D"d9002d4eda6e" data-layout=3D"wide" data-width=3D"760">
+<h2 local-id=3D"754b6a5aca6e" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-Customerpreparationbeforedeployment">Customer preparation before depl=
+oyment</h2>
+<h3 local-id=3D"8325371e8925" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-Scope">Scope</h3>
+<p local-id=3D"f480977b4382">Create one IAM role in every customer AWS acco=
+unt that should be monitored. AWS DevOps Agent will later assume this role =
+directly through the AWS service principal <code>aidevops.amazonaws.com</co=
+de>.</p>
+<p local-id=3D"a54bcbc0cc4d">No long-lived AWS access keys, secret keys, or=
+ session tokens must be shared with StormAI or REPLY.</p>
+<p local-id=3D"fe25658f74e4">The customer supplies:</p>
+<ul local-id=3D"5b6ae41e5394">
+<li local-id=3D"bc3e26296733">
+<p local-id=3D"2fbda44eb60f"><code>&lt;MONITORING_ACCOUNT_ID&gt;</code> =E2=
+=80=93 The 12-digit AWS account ID in which StormAI/REPLY will deploy the A=
+gent Space.</p></li>
+<li local-id=3D"c5234c717b03">
+<p local-id=3D"29085b0c37ac"><code>&lt;REGION&gt;</code> =E2=80=93 The AWS =
+Region in which the Agent Space will be deployed.</p></li>
+<li local-id=3D"a279ff060108">
+<p local-id=3D"78ed94ab1d02">The role name, normally <code>DevOpsAgentCross=
+AccountRole</code>.</p></li>
+<li local-id=3D"37b8a12bbb59">
+<p local-id=3D"29bd3460b34d"><code>&lt;EXTERNAL_ACCOUNT_ID&gt;</code> =E2=
+=80=93 The 12-digit ID of each customer account to be monitored.</p></li>
+<li local-id=3D"999076d9ef1f">
+<p local-id=3D"655b5d8c68bc">The ARN of the role created in each account.</=
+p></li>
+</ul>
+<h3 local-id=3D"a926756ba830" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-Customerprerequisites">Customer prerequisites</h3>
+<p local-id=3D"3b45a8d7b268">The customer needs:</p>
+<ul local-id=3D"eec7077196b1">
+<li local-id=3D"4b89ae0e9b86">
+<p local-id=3D"3eaf8a2b66df">Administrative access, or sufficient IAM permi=
+ssions to create and configure a role in each target account.</p></li>
+<li local-id=3D"e163a33e9582">
+<p local-id=3D"515a3682c47d">Confirmation that AWS Organizations SCPs and p=
+ermission boundaries allow the required IAM operations.</p></li>
+<li local-id=3D"43c31ec73e0e">
+<p local-id=3D"bc890622219e">A normal change record or approval for attachi=
+ng the AWS-managed <code>AIDevOpsAgentAccessPolicy</code>.</p></li>
+</ul>
+<p local-id=3D"0f06da4858cb"><code>AIDevOpsAgentAccessPolicy</code> is main=
+tained and versioned by AWS and can change over time. The customer should r=
+eview the <a href=3D"https://docs.aws.amazon.com/aws-managed-policy/latest/=
+reference/AIDevOpsAgentAccessPolicy.html" class=3D"external-link" rel=3D"no=
+follow">current AWS-managed policy</a> as part of the approval.</p>
+<h3 local-id=3D"039db47d52e9" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-1.Verifythetargetaccount">1. Verify the target account</h3>
+<p local-id=3D"775902400c88">Run the following command with credentials for=
+ the customer account in which the role will be created:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">aws sts=
+ get-caller-identity</pre>
+</div>
+</div>
+<p local-id=3D"7b2c38bc0abe">Confirm that the returned account ID equals <c=
+ode>&lt;EXTERNAL_ACCOUNT_ID&gt;</code>.</p>
+<h3 local-id=3D"2987200acefc" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-2.Createthepre-deploymenttrustpolicy">2. Create the pre-deployment tr=
+ust policy</h3>
+<p local-id=3D"5dcda2d506fd">Because the Agent Space does not yet exist, it=
+s final ID is not available. The trust policy therefore permits Agent Space=
+s only:</p>
+<ul local-id=3D"2d57df930f98">
+<li local-id=3D"af32cec6a06b">
+<p local-id=3D"b178c60c32b3">From the designated monitoring account, enforc=
+ed by <code>aws:SourceAccount</code>.</p></li>
+<li local-id=3D"82cfd153f2f3">
+<p local-id=3D"4bdd5de3549b">In the agreed Region.</p></li>
+<li local-id=3D"2a4d5c231d0e">
+<p local-id=3D"09da1c63fee1">Under the <code>agentspace/*</code> resource t=
+ype.</p></li>
+</ul>
+<p local-id=3D"040bde66f3de">This follows the same pre-deployment trust pat=
+tern AWS uses when an Agent Space ID is not yet available.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">cat &gt=
+; devops-cross-account-trust-policy.json &lt;&lt; 'EOF'</pre>
+</div>
+</div>
+<h3 local-id=3D"fcc279e04b14" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-3.AttachtheAWS-managedaccesspolicy"><br>
+3. Attach the AWS-managed access policy</h3>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "aidevops.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceAccount": "&lt;MONITORING_ACCOUNT_ID&gt;"
+        },
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:aidevops:&lt;REGION&gt;:&lt;MONITORING_=
+ACCOUNT_ID&gt;:agentspace/*"
+        }
+      }
+    }
+  ]
+}
+EOF</pre>
+</div>
+</div>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">aws iam=
+ create-role \
+  --role-name DevOpsAgentCrossAccountRole \
+  --assume-role-policy-document file://devops-cross-account-trust-policy.js=
+on</pre>
+</div>
+</div>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">aws iam=
+ attach-role-policy \
+  --role-name DevOpsAgentCrossAccountRole \
+  --policy-arn arn:aws:iam::aws:policy/AIDevOpsAgentAccessPolicy</pre>
+</div>
+</div>
+<p local-id=3D"b07a4344944f">The effective permissions are the intersection=
+ of the role permissions and the session guardrail applied by AWS DevOps Ag=
+ent.</p>
+<h3 local-id=3D"8047d9338aaa" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-4.AllowcreationoftheResourceExplorerservice-linkedrole">4. Allow crea=
+tion of the Resource Explorer service-linked role</h3>
+<p local-id=3D"dc7852fea1f6">This permission lets AWS DevOps Agent create t=
+he Resource Explorer service-linked role in the customer account if it does=
+ not already exist.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">cat &gt=
+; devops-cross-account-additional-policy.json &lt;&lt; 'EOF'
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCreateServiceLinkedRoles",
+      "Effect": "Allow",
+      "Action": "iam:CreateServiceLinkedRole",
+      "Resource": "arn:aws:iam::&lt;EXTERNAL_ACCOUNT_ID&gt;:role/aws-servic=
+e-role/resource-explorer-2.amazonaws.com/AWSServiceRoleForResourceExplorer"
+    }
+  ]
+}
+EOF
+
+aws iam put-role-policy \
+  --role-name DevOpsAgentCrossAccountRole \
+  --policy-name AllowCreateServiceLinkedRoles \
+  --policy-document file://devops-cross-account-additional-policy.json</pre=
+>
+</div>
+</div>
+<h3 local-id=3D"d7acbc5b2d4c" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-5.Validateandhandovertheresult">5. Validate and hand over the result<=
+/h3>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">aws iam=
+ get-role \
+  --role-name DevOpsAgentCrossAccountRole \
+  --query 'Role.Arn' \
+  --output text
+
+aws iam list-attached-role-policies \
+  --role-name DevOpsAgentCrossAccountRole
+
+aws iam get-role-policy \
+  --role-name DevOpsAgentCrossAccountRole \
+  --policy-name AllowCreateServiceLinkedRoles</pre>
+</div>
+</div>
+<p local-id=3D"1cfeabaafa77">Provide REPLY with only:</p>
+<ul local-id=3D"6e2937f8f8f6">
+<li local-id=3D"933fc6b700b9">
+<p local-id=3D"52a0e8a63cdc">External account ID</p></li>
+<li local-id=3D"fea2f1bc5900">
+<p local-id=3D"e739f8a6732b">Role ARN</p></li>
+</ul>
+<p local-id=3D"fa5cad9e23a1">Repeat steps 1=E2=80=935 for every customer ac=
+count to be monitored.</p>
+<h3 local-id=3D"fc26be4bf2ba" id=3D"CopyofSimplifierPoC-InstallationRequire=
+ments-Terraform/OpenTofuexampleforthecustomerrole">Terraform/OpenTofu examp=
+le for the customer role</h3>
+<p local-id=3D"22d32a183df3">Run this configuration with an AWS provider au=
+thenticated to the customer target account. The target account ID is derive=
+d from the active provider identity.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">terrafo=
+rm {
+  required_version =3D "&gt;=3D 1.6.0"
+
+  required_providers {
+    aws =3D {
+      source  =3D "hashicorp/aws"
+      version =3D "~&gt; 6.0"
+    }
+  }
+}
+
+variable "monitoring_account_id" {
+  type        =3D string
+  description =3D "The AWS account ID in which StormAI/REPLY will deploy th=
+e Agent Space"
+
+  validation {
+    condition     =3D can(regex("^\\d{12}$", var.monitoring_account_id))
+    error_message =3D "The monitoring_account_id must be a valid 12-digit A=
+WS account ID."
+  }
+}
+
+variable "agent_space_region" {
+  type        =3D string
+  description =3D "The AWS Region in which StormAI/REPLY will deploy the Ag=
+ent Space"
+}
+
+data "aws_caller_identity" "target" {}
+
+resource "aws_iam_role" "devops_agent_cross_account" {
+  name =3D "DevOpsAgentCrossAccountRole"
+
+  assume_role_policy =3D jsonencode({
+    Version =3D "2012-10-17"
+    Statement =3D [
+      {
+        Effect =3D "Allow"
+        Principal =3D {
+          Service =3D "aidevops.amazonaws.com"
+        }
+        Action =3D "sts:AssumeRole"
+        Condition =3D {
+          StringEquals =3D {
+            "aws:SourceAccount" =3D var.monitoring_account_id
+          }
+          ArnLike =3D {
+            "aws:SourceArn" =3D "arn:aws:aidevops:${var.agent_space_region}=
+:${var.monitoring_account_id}:agentspace/*"
+          }
+        }
+      }
+    ]
+  })
+
+  tags =3D {
+    Purpose   =3D "AWS DevOps Agent Cross-Account Access"
+    ManagedBy =3D "Terraform"
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "devops_agent_access" {
+  role       =3D aws_iam_role.devops_agent_cross_account.name
+  policy_arn =3D "arn:aws:iam::aws:policy/AIDevOpsAgentAccessPolicy"
+}
+
+resource "aws_iam_role_policy" "allow_resource_explorer_service_linked_role=
+" {
+  name =3D "AllowCreateServiceLinkedRoles"
+  role =3D aws_iam_role.devops_agent_cross_account.id
+
+  policy =3D jsonencode({
+    Version =3D "2012-10-17"
+    Statement =3D [
+      {
+        Sid      =3D "AllowCreateServiceLinkedRoles"
+        Effect   =3D "Allow"
+        Action   =3D "iam:CreateServiceLinkedRole"
+        Resource =3D "arn:aws:iam::${data.aws_caller_identity.target.accoun=
+t_id}:role/aws-service-role/resource-explorer-2.amazonaws.com/AWSServiceRol=
+eForResourceExplorer"
+      }
+    ]
+  })
+}
+
+output "external_account_id" {
+  value =3D data.aws_caller_identity.target.account_id
+}
+
+output "role_arn" {
+  value =3D aws_iam_role.devops_agent_cross_account.arn
+}</pre>
+</div>
+</div>
+<hr local-id=3D"ee3f8ee007a8" data-layout=3D"wide" data-width=3D"760">
+<p local-id=3D"300e36f3d540"></p>
+    </div>
+</body>
+</html>
+------=_Part_26_1178908566.1786361499676--
