@@ -208,7 +208,7 @@ $endif$
 
 \vspace*{58mm}
 \begin{flushright}
-  \begin{minipage}{0.62\textwidth}
+  \begin{minipage}{0.78\textwidth}
     \RaggedLeft
     \hyphenpenalty=10000
     \exhyphenpenalty=10000
