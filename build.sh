@@ -4,13 +4,15 @@ set -euo pipefail
 # ponytail: hardcoded macOS LibreOffice path; upgrade: $(which soffice) with fallback
 SOFFICE=/Applications/LibreOffice.app/Contents/MacOS/soffice
 
-input="${1:-sample.md}"
+# resolve before the `cd` below so relative paths from any working dir work
+input="$(realpath "${1:-sample.md}")"
 # ponytail: strips path, swaps extension, collapses non-alphanumeric runs to dashes
 output="$(basename "${input%.*}" | tr -cs '[:alnum:]' '-' | sed 's/-$//')".pdf
 
-# clean up any temp files we create on exit
-_tmpfiles=()
-#trap 'rm -f "${_tmpfiles[@]+"${_tmpfiles[@]}"}"' EXIT
+# intermediates live in a private temp dir, never next to the user's input
+# (a real Foo.doc would otherwise overwrite and then delete an existing Foo.docx)
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir"' EXIT
 
 # detect pandoc input format from file extension
 ext="${input##*.}"
@@ -28,8 +30,7 @@ esac
 if [[ "$ext" == "doc" ]]; then
 if head -1 "$input" | grep -qi "^mime-version\|^content-type\|^date:\|^message-id"; then
 # MIME/HTML disguised as .doc — extract the HTML part directly
-_mime_html="${input%.doc}_mime.html"
-_tmpfiles+=("$_mime_html")
+_mime_html="$tmpdir/mime.html"
 python3 -c "
 import email, sys
 with open(sys.argv[1], 'rb') as f:
@@ -39,14 +40,11 @@ for part in msg.walk():
         sys.stdout.buffer.write(part.get_payload(decode=True))
         break
 " "$input" > "$_mime_html"
-input="$(realpath "$_mime_html")"
+input="$_mime_html"
 fmt=html
 else
-_docx="${input%.doc}.docx"
-_tmpfiles+=("$_docx")
-"$SOFFICE" --headless --convert-to docx \
---outdir "$(dirname "$(realpath "$input")")" "$input"
-input="$(realpath "$_docx")"
+"$SOFFICE" --headless --convert-to docx --outdir "$tmpdir" "$input"
+input="$tmpdir/$(basename "${input%.doc}").docx"
 fi
 fi
 
@@ -56,8 +54,7 @@ fi
 # this the indentation is lost. Applies to any HTML input: .doc MIME payloads,
 # REST export_view, or a saved .html file.
 if [[ "$fmt" == "html" ]]; then
-_pre_html="${input%.*}_pre.html"
-_tmpfiles+=("$_pre_html")
+_pre_html="$tmpdir/pre.html"
 python3 - "$input" > "$_pre_html" <<'PY'
 import re, sys
 src = open(sys.argv[1], encoding='utf-8', errors='replace').read()
@@ -71,7 +68,7 @@ src = re.sub(
     fix, src, flags=re.S)
 sys.stdout.write(src)
 PY
-input="$(realpath "$_pre_html")"
+input="$_pre_html"
 fi
 
 cd "$(dirname "$0")"
@@ -84,6 +81,13 @@ case "$fmt" in
 markdown|rst|latex) extra_args="--number-sections" ;;
 *)                  extra_args="" ;;
 esac
+
+# Server mode (STORM_UNTRUSTED=1): drop-raw.lua strips all raw LaTeX from the
+# input; additionally forbid shell escape and file access outside the build dir.
+if [[ "${STORM_UNTRUSTED:-}" == "1" ]]; then
+extra_args+=" --pdf-engine-opt=--no-shell-escape"
+export openin_any=p openout_any=p
+fi
 
 pandoc "$input" \
 --from "$fmt" \

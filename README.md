@@ -49,6 +49,7 @@ Anlagen) im PDF ausgelassen.
 | Feld | Beschreibung |
 |---|---|
 | `title` | Dokumenttitel |
+| `lang` | Sprache der Labels: `de`/`de-DE` für Deutsch, sonst Englisch |
 | `subtitle` | Untertitel |
 | `author` | Erstellt von |
 | `approved_by` | Freigegeben von |
@@ -77,8 +78,14 @@ Beispiel siehe `sample.md`.
 
 - `--number-sections` wird nur für Textformate (Markdown, RST, LaTeX) gesetzt;
   Word- und HTML-Dokumente haben häufig bereits nummerierte Überschriften.
-- Temporäre Zwischendateien (`.docx`, `_mime.html`) werden nach dem Build
-  automatisch gelöscht.
+- Zwischendateien (z. B. aus Confluence- oder `.doc`-Konvertierung) entstehen
+  in einem eigenen Temp-Verzeichnis und werden nach dem Build gelöscht; neben
+  der Eingabedatei wird nichts angelegt oder überschrieben.
+- **Server-Modus:** Bei Eingaben fremder Nutzer `STORM_UNTRUSTED=1 bash build.sh …`
+  setzen. Dann wird rohes LaTeX aus der Eingabe (inkl. Metadaten) verworfen,
+  Shell-Escape ist aus und LuaLaTeX darf nur im Build-Verzeichnis Dateien lesen
+  und schreiben. Ohne diesen Modus führt LuaLaTeX eingebettetes LaTeX wie
+  `\directlua{…}` aus.
 - Für einen plattformübergreifenden oder CI-basierten Build müssen die
   Arial-Schriftdateien kontrolliert bereitgestellt und die Schriftpfade im
   Template konfiguriert werden.

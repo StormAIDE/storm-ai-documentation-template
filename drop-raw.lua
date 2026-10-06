@@ -18,15 +18,30 @@ function Para(el)
   return el
 end
 
--- Drop HTML/VML junk from Word exports, but keep LaTeX we inject ourselves
+-- Server mode (STORM_UNTRUSTED=1): input comes from other users, so raw LaTeX
+-- in it (e.g. \directlua) must never reach LuaLaTeX.
+local untrusted = os.getenv('STORM_UNTRUSTED') == '1'
+
+-- Drop HTML/VML junk from Word exports, but keep LaTeX we inject ourselves.
+-- Our own LaTeX (Code, Table) is created after this pass, so dropping
+-- every raw element here never removes it.
 function RawBlock(el)
-  if el.format == 'latex' or el.format == 'tex' then return el end
+  if not untrusted and (el.format == 'latex' or el.format == 'tex') then return el end
   return {}
 end
 
 function RawInline(el)
-  if el.format == 'latex' or el.format == 'tex' then return el end
+  if not untrusted and (el.format == 'latex' or el.format == 'tex') then return el end
   return {}
+end
+
+-- Pandoc templates cannot compare strings, so expose `lang: de`/`de-DE`
+-- as the boolean `lang_de` for the template's label switch.
+function Meta(meta)
+  if meta.lang and pandoc.utils.stringify(meta.lang):match('^de') then
+    meta.lang_de = true
+  end
+  return meta
 end
 
 -- Give tables proportional column widths so LaTeX wraps instead of overflowing,
