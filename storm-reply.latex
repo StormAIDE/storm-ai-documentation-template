@@ -74,7 +74,7 @@
 % Localised labels. English is the default; set `lang: de` in the document
 % metadata (or pass --metadata lang=de) for German.
 % ---------------------------------------------------------------------------
-$if(lang)$$if(lang.de)$
+$if(lang_de)$
 \newcommand{\lblContents}{INHALTSVERZEICHNIS}
 \newcommand{\lblCreatedBy}{erstellt von}
 \newcommand{\lblApprovedBy}{freigegeben von}
@@ -93,24 +93,6 @@ $if(lang)$$if(lang.de)$
 \newcommand{\lblApprovalCol}{Freigabe}
 \newcommand{\lblMainChanges}{Wesentliche Änderungen gegenüber der vorherigen Version}
 $else$
-\newcommand{\lblContents}{CONTENTS}
-\newcommand{\lblCreatedBy}{created by}
-\newcommand{\lblApprovedBy}{approved by}
-\newcommand{\lblUnit}{unit}
-\newcommand{\lblIssueDate}{issue date}
-\newcommand{\lblRevision}{revision}
-\newcommand{\lblDocument}{document}
-\newcommand{\lblPage}{page}
-\newcommand{\lblPrivacy}{confidentiality}
-\newcommand{\lblDocStatus}{DOCUMENT STATUS}
-\newcommand{\lblChangeSummary}{CHANGES SUMMARY}
-\newcommand{\lblAttachments}{ATTACHMENTS}
-\newcommand{\lblRevisionCol}{Review}
-\newcommand{\lblDateCol}{Date}
-\newcommand{\lblChangeCol}{Changes}
-\newcommand{\lblApprovalCol}{Approved by}
-\newcommand{\lblMainChanges}{Main changes compared to the previous version}
-$endif$$else$
 \newcommand{\lblContents}{CONTENTS}
 \newcommand{\lblCreatedBy}{created by}
 \newcommand{\lblApprovedBy}{approved by}
